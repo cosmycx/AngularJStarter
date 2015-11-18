@@ -1,0 +1,42 @@
+<!--HEADER++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+<!-- Custom styles for this template -->
+<link href="css/styles.css" rel="stylesheet">
+<!--END HEADER++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--hjs github theme -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<script src="js/routes.js"></script>
+<script src="js/controllers/controller.js"></script>
+<script src="js/directives/directive.js"></script>
+<script src="js/filters/filter.js"></script>
+<script src="js/services/service.js"></script>
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+<div class="container" ng-app="sap">
+
+  <div class="masthead">
+    <h4 class="text-muted">Set-up AngularJS folders, files structure and start-up code</h4><br>
+    <nav ng-controller="menuActive">
+      <ul class="nav nav-justified">
+        <li ng-class={'active':'/'===location}><a href="#/">Folder/Files</a></li>
+        <li ng-class={'active':'/main'===location}><a href="#/main">index.html</a></li>
+        <li ng-class={'active':'/routes'===location}><a href="#/routes">routes.js</a></li>
+        <li ng-class={'active':'/js'===location}><a href="#/js">JS</a></li>
+      </ul>
+    </nav>
+  </div>
+
+      <!--(PARTIALS)-->
+      <div class="row" ng-view autoscroll>
+      </div><!-- / -->
+
+</div> <!-- /container -->
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+

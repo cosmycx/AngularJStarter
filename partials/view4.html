@@ -1,0 +1,97 @@
+<!-- hljs start -->
+<div hljs hljs-no-escape>
+
+//CONTROLLER.JS------------------------------------------------------------
+sap.controller('mainCtrl', function() {
+
+	// main controller CODE
+
+});//------------ end Ctrl -----------
+
+sap.controller('menuActive', function($scope, $location){
+
+	$scope.$on('$locationChangeStart', function(event) {
+	$scope.location = $location.path();
+	});
+
+});
+
+//FILTER.JS----------------------------------------------------------------
+//sample filter selecting any data tags from data set
+sap.filter('filterByTags', function() {
+    return function filterByTags( haystack , needle ) {
+        var result = [];
+        var i,j,k,pushed;
+
+        //console.log( 'haystack: '+ haystack +'  -  needle: '+needle);
+        if (needle.length===0) result = haystack;
+        	else{	
+		        for (i in haystack) {
+		        	pushed = false;
+
+		        	for (j in haystack[i].tags){
+		        	 //console.log('haystack['+i+']'+'.tags['+j+']:'+haystack[i].tags[j]);
+		        	 	if (pushed) break;
+
+		        	 	for (k in needle) {
+		        	 		//console.log('needle['+k+']:'+needle[k])
+		        	 		if (haystack[i].tags[j]==needle[k]) {
+		        	 			if (!pushed) {
+		        	 				result.push(haystack[i]);
+		        	 				//console.log('push:'+i);
+		        	 				pushed = true;
+		        	 			} else break;
+		        	 		} 		
+		        	 	}
+		        	 }
+		        }
+		    }//end else
+		    //var n; for (n in result) console.log(result[n].tags)
+
+        return (result);
+    };
+});
+
+//SERVICE.JS---------------------------------------------------------------
+//sample service
+sap.service('dataServ', function(){
+
+        var tags = [];
+        var names = [];
+        
+        var setTagsAndNames = function(inTags, inNames){
+
+            tags = inTags;
+            names = inNames;
+
+            //broadcasting change in filters
+            //$rootScope.$broadcast('mrktFB'); 
+        }
+
+        var getTags = function(){
+        return tags;
+        }
+        var getNames = function(){
+        return names;
+        }
+
+     return {
+        setTagsAndNames : setTagsAndNames,
+        getTags : getTags,
+        getNames : getNames
+    }
+
+});
+
+//DIRECTIVE.JS-------------------------------------------------------------
+sap.directive('jsSidebar', function(){
+	return{
+		restrict: 	 'E',
+		templateUrl: 'sap/partials/oneView.html'
+	}
+});
+
+</div>
+<!-- hljs end -->
+
+
